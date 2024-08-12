@@ -21,7 +21,7 @@
 </head>
 <body>
 
-<h2> added new</h2>
+
 
 <!-- navbar -->
 <%@include file = "normal_navbar.jsp" %>
