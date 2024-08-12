@@ -11,13 +11,5 @@ body
 	
 }
 
-.btn-primary:hover {
-    background-color: #6C6DB2; /* Darker shade of blue */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
-}
 
-.btn-secondary:hover {
-    background-color: #6c757d; /* Darker shade of gray */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
-}
 
