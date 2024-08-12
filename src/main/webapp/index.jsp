@@ -21,6 +21,8 @@
 </head>
 <body>
 
+<h1> Hello world</h1>
+
 <!-- navbar -->
 <%@include file = "normal_navbar.jsp" %>
 
