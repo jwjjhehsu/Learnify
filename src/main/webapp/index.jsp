@@ -21,6 +21,11 @@
 </head>
 <body>
 
+<h1>
+hello </h1>
+
+
+Connection con = ConnectionProvider.getConnecti
 
 
 <!-- navbar -->
@@ -28,14 +33,24 @@
 
 
 <!-- Banner -->
-<div class = "container-fluid p-0 m-0">
+<div class="container-fluid p-0 m-0">
+    <div class="jumbotron jumbotron-fluid text-center primary-background text-white p-5" style="background-color: #d0e7ff; color: #333;">
+        <div class="container">
+            <h3 class="display-3">Welcome to Learnify</h3>
+            <p >Programming languages usually contain abstractions for defining and manipulating data structures or controlling the flow of execution. The practical necessity that a programming language supports adequate abstractions is expressed by the abstraction principle.</p>
+            <p >Thousands of programming languages—often classified as imperative, functional, logic, or object-oriented—have been developed for a wide variety of uses. Many aspects of programming language design involve tradeoffs—for example, exception handling simplifies error handling, but at a performance cost. </p>
+<button class="btn btn-lg btn-primary"><span class = "	fas fa-external-link-alt"></span>Start! It's free</button>
+<button class="btn btn-lg btn-secondary">Login</button>
 
 
-<div class = "jumbotron">
-<h3> Welcome, Friends</h3>
-<h3>  Learnify ..</h3>
-<p> Welcome to the world of technology ...
+
+        </div>
+    </div>
 </div>
+
+
+
+
 
 
 
