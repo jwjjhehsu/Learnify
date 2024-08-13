@@ -30,7 +30,7 @@
         .primary-background {
             background-color: #f8f9fa; /* Light background color */
         }
-        
+
         /* Media queries for responsive design */
         @media (max-width: 767px) {
             .container {
@@ -69,36 +69,36 @@
 
 <%@ include file="normal_navbar.jsp" %>
 
-<main class="primary-background py-6"> <!-- Adjusted padding -->
+<main class="primary-background py-6" style="padding-bottom: 70vh;"> 
     <div class="container">
         <div class="col-md-6 offset-md-3">
             <div class="card">
                 <div class="card-header text-center primary-background text-white">
                     <span class="fa fa-3x fa-user-circle"></span>
                     <br>
-                    <b>Register Here</b>
+                    <strong>Register Here</strong>
                 </div>
                 <div class="card-body">
-                    <form action="" method="post" onsubmit="return preventScroll();">
-                        <div class="mb-3">
+                    <form id = "reg-form" action="RegisterServlet" method="post" onsubmit="return preventScroll();">
+                        <div class="form-group">
                             <label for="user_name" class="form-label">User Name</label>
-                            <input type="text" class="form-control" id="user_name" placeholder="Enter Your Name" required>
+                            <input type="text" name="user_name" class="form-control" id="user_name" placeholder="Enter Your Name" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Your Email" required>
+                        <div class="form-group">
+                            <label for="user_email" class="form-label">Email</label>
+                            <input type="email" name="user_email" class="form-control" id="user_email" placeholder="Enter Your Email" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                        <div class="form-group">
+                            <label for="user_password" class="form-label">Password</label>
+                            <input type="password" name="user_password" class="form-control" id="user_password" placeholder="Password" required>
                         </div>
-                        <div class="mb-3">
+                        <div class="form-group">
                             <label class="form-label">Select Gender</label>
                             <div>
-                                <input type="radio" id="gender_male" name="gender" value="male" required class="gender-label"> 
-                                <label for="gender_male">Male</label>
-                                <input type="radio" id="gender_female" name="gender" value="female" class="gender-label"> 
-                                <label for="gender_female">Female</label>
+                                <input type="radio" id="male" name="gender" value="male" required>
+                                <label for="male" class="gender-label">Male</label>
+                                <input type="radio" id="female" name="gender" value="female" required>
+                                <label for="female" class="gender-label">Female</label>
                             </div>
                         </div>
                         <div class="form-group mb-3">
@@ -106,10 +106,15 @@
                             <textarea name="about" class="form-control" id="about" rows="4" placeholder="Enter something about yourself"></textarea>
                         </div>
                         <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                            <input type="checkbox" name="check" class="form-check-input" id="exampleCheck1" >
                             <label class="form-check-label" for="exampleCheck1">I agree to the terms and conditions</label>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <br>
+                     <div class="container text-center" id = "loader"  style = "display:none">
+                       <span class="fa fa-refresh fa-spin fa-3x "></span>
+                       <h4> Please Wait</h4>
+                     </div>
+                        <button id="submit-btn" type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
                 <div class="card-footer"></div>
@@ -122,11 +127,61 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="js/myjs.js" type="text/javascript"></script>
+
+
+<script src = 
+https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js>
+	</script>
+	
+	
 <script>
     function preventScroll() {
         document.body.style.overflow = 'hidden'; // Prevent scrolling
         return true; // Allow form submission
     }
+</script>
+
+<script>
+$(document).ready(function() {
+	  console.log("Document loaded.");
+
+	  $('#reg-form').on('submit', function(event) {
+	    event.preventDefault();
+
+	    let form = new FormData(this);
+	    $("#submit-btn").hide();
+	    $("#loader").show();
+
+	    // Send to RegisterServlet
+	    $.ajax({
+	      url: "RegisterServlet",
+	      type: 'POST',
+	      data: form,
+	      success: function(data, textStatus, jqXHR) {
+	        console.log(data);
+	        
+	        $("#submit-btn").show();
+	        $("#loader").hide();
+	        
+	        if(data.trim() === 'done') {
+	          swal("Registered Successfully. Redirecting to the login page.")
+	          .then((value) => {
+	            window.location = "login_page.jsp";
+	          });
+	        } else {
+	          swal(data);
+	        }
+	      },
+	      error: function(jqXHR, textStatus, errorThrown) {
+	        $("#submit-btn").show();
+	        $("#loader").hide();
+	        swal("Something went wrong. Please try again!");
+	      },
+	      processData: false,
+	      contentType: false
+	    });
+	  });
+	});
 </script>
 </body>
 </html>
