@@ -6,15 +6,16 @@ public class User {
 
 
 
-	private String id;
+	private int id;
 	private String name;
 	private String email;
 	private String password;
 	private String gender;
-	private String datetime;
+	private Timestamp datetime;
 	private String  about;
+	private String profile;
 	
-	public User(String id, String name, String email, String password, String gender, String datetime, String about) {
+	public User(int id, String name, String email, String password, String gender, Timestamp datetime, String about) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -40,10 +41,10 @@ public class User {
 	
 	
 	//Getters and setters
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -70,11 +71,11 @@ public class User {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getDatetime() {
+	public Timestamp getDatetime() {
 		return datetime;
 	}
-	public void setDatetime(String datetime) {
-		this.datetime = datetime;
+	public void setDatetime(Timestamp timestamp) {
+		this.datetime = timestamp;
 	}
 	public String getAbout() {
 		return about;
@@ -82,6 +83,14 @@ public class User {
 	public void setAbout(String about) {
 		this.about = about;
 	}
+	public String getProfile() {
+		return profile;
+	}
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+	
+	
 	
 	
 	
