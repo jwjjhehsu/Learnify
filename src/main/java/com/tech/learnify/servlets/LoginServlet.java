@@ -3,6 +3,7 @@ package com.tech.learnify.servlets;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import com.tech.learnify.dao.UserDao;
+import com.tech.learnify.entities.Message;
 import com.tech.learnify.entities.User;
 import com.tech.learnify.helper.ConnectionProvider;
 import java.io.IOException;
@@ -39,9 +40,14 @@ public class LoginServlet extends HttpServlet {
 
         if (user == null) {
             // Login failed
-            out.println("<html><body><h3>Login Failed. Please check your email and password.</h3></body></html>");
+           Message msg = new Message("Invalid Details ! Try again .. ", "error","alert-danger");
+           HttpSession s = request.getSession();
+           s.setAttribute("msg", msg);
+           response.sendRedirect("login_page.jsp");
+           
         } else {
             // Login success
+        	
             HttpSession session = request.getSession();
             session.setAttribute("currentUser", user);
             response.sendRedirect("profile.jsp");
