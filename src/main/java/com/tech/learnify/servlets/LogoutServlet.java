@@ -27,7 +27,8 @@ public class LogoutServlet extends HttpServlet {
 
         // Create a message to indicate successful logout
         Message message = new Message("Logout Successfully", "success", "alert-success");
-        request.setAttribute("msg", message);            
+        session.setAttribute("msg", message);
+        
 
         // Redirect to the login page
         response.sendRedirect("login_page.jsp");
