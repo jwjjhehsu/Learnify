@@ -34,7 +34,9 @@ clip-path: polygon(0% 0%, 100% 0%, 100% 84%, 85% 84%, 100% 100%, 53% 100%, 0 100
             <h3 class="display-3">Welcome to Learnify</h3>
             <p>Programming languages usually contain abstractions for defining and manipulating data structures or controlling the flow of execution. The practical necessity that a programming language supports adequate abstractions is expressed by the abstraction principle.</p>
             <p>Thousands of programming languages—often classified as imperative, functional, logic, or object-oriented—have been developed for a wide variety of uses. Many aspects of programming language design involve tradeoffs—for example, exception handling simplifies error handling, but at a performance cost.</p>
-            <button class="btn btn-lg btn-outline-light"><span class="fa fa-user-plus"></span> Start! It's free</button>
+            <a href="register_page.jsp" class="btn btn-lg btn-outline-light">
+    <span class="fa fa-user-plus"></span> Start! It's free
+</a>
             <a href = "login_page.jsp" class="btn btn-lg btn-outline-light"><span class="fa fa-user-circle fa-spin"></span> Login</a>
         </div>
     </div>
@@ -59,7 +61,7 @@ clip-path: polygon(0% 0%, 100% 0%, 100% 84%, 85% 84%, 100% 100%, 53% 100%, 0 100
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Java Programming Language</h5>
+                    <h5 class="card-title">Python Programming Language</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn primary-background text-white">Read More</a>
                 </div>
@@ -69,7 +71,7 @@ clip-path: polygon(0% 0%, 100% 0%, 100% 84%, 85% 84%, 100% 100%, 53% 100%, 0 100
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Card Title</h5>
+                    <h5 class="card-title">Database Programming</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn primary-background text-white">Read More</a>
                 </div>
@@ -101,7 +103,31 @@ clip-path: polygon(0% 0%, 100% 0%, 100% 84%, 85% 84%, 100% 100%, 53% 100%, 0 100
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Card Title</h5>
+                    <h5 class="card-title">Cyber Security</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn primary-background text-white">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Linkedin Optimization</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn primary-background text-white">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Data science</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <a href="#" class="btn primary-background text-white">Read More</a>
                 </div>

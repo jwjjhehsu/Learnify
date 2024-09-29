@@ -29,6 +29,8 @@
           <a class="nav-link" href="#"><span class = "	fa fa-address-book"></span>  Contact Us</a>
         </li>
         
+        
+        
                 <li class="nav-item">
           <a class="nav-link" href="login_page.jsp"><span class = "fa fa-user-circle "></span> Login</a>
         </li>
@@ -41,10 +43,18 @@
         
         
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+ <form class="d-flex" role="search" style="border: 2px solid #28a745; border-radius: 8px; padding: 12px; background-color: #ffffff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+    <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search" 
+           style="border: 2px solid #28a745; border-radius: 5px; padding: 10px; width: 260px; transition: box-shadow 0.3s, border-color 0.3s;"
+           onfocus="this.style.boxShadow='0 0 5px rgba(40, 167, 69, 0.5)'; this.style.borderColor='#28a745';" 
+           onblur="this.style.boxShadow='none'; this.style.borderColor='#28a745';">
+    <button class="btn btn-outline-success" type="submit" 
+            style="border-radius: 5px; padding: 10px 20px; background-color: #28a745; color: white; border: none; transition: background-color 0.3s, transform 0.3s;"
+            onmouseover="this.style.backgroundColor='#218838'; this.style.transform='scale(1.05)';"
+            onmouseout="this.style.backgroundColor='#28a745'; this.style.transform='scale(1)';">
+        <strong>Search</strong>
+    </button>
+</form>
     </div>
   </div>
 </nav>
