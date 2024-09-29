@@ -1,3 +1,4 @@
+<%@page import="com.tech.learnify.entities.Message"%>
 <%@page import="com.tech.learnify.entities.User"%>
 <%@page errorPage="error_page_jsp"%>
 
@@ -80,6 +81,21 @@ if (user == null) {
 		</div>
 	</nav>
 	<!-- Navbar ends -->
+	
+	
+			<%
+							// Retrieve the message from the session
+							Message m = (Message) session.getAttribute("msg");
+							if (m != null) {
+							%>
+							<div class="alert <%=m.getCssClass()%>" role="alert">
+								<%=m.getContent()%>
+							</div>
+							<%
+							// Remove the message from the session after displaying it
+							session.removeAttribute("msg");
+							}
+							%>
 	<br>
 
 	<!-- Profile modal -->
@@ -148,7 +164,7 @@ if (user == null) {
 					<h3 style="text-align: center" class="mt-2">Please Edit
 						Carefully</h3>
 
-					<form action="EditServlet" method="post">
+					<form action="EditServlet" method="post" enctype="multipart/form-data"> <!-- it describes the form contain multiform data -->
 						<table class="table">
 
 							<tr>
@@ -189,7 +205,7 @@ if (user == null) {
 
 								<td>About</td>
 								<td>
-								 <textarea rows="5" cols="" class = "form-control" name="user-about">
+								 <textarea rows="5" cols="" class = "form-control" name="user_about">
 								 
 								      <%= user.getAbout() %>
 								 </textarea>
