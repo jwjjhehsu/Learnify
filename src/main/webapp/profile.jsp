@@ -113,45 +113,46 @@ if (user == null) {
 	%>
 
 	<!--  main body of the page -->
-<main>
-    <div class="container">
-        <div class="row mt-4">
-            <!-- First column: List of categories -->
-            <div class="col-md-4">
-                <div class="list-group">
-                    <a href="#" onclick = "getPosts(0,this)" class=" c-link list-group-item list-group-item-action active" aria-current="true">All Posts</a>
-                    <!-- Categories -->
-                    <%
-                        PostDao d = new PostDao(ConnectionProvider.getConnection());
-                        ArrayList<Category> list1 = d.getAllCategories();
+	<main>
+		<div class="container">
+			<div class="row mt-4">
+				<!-- First column: List of categories -->
+				<div class="col-md-4">
+					<div class="list-group">
+						<a href="#" onclick="getPosts(0,this)"
+							class=" c-link list-group-item list-group-item-action active"
+							aria-current="true">All Posts</a>
+						<!-- Categories -->
+						<%
+						PostDao d = new PostDao(ConnectionProvider.getConnection());
+						ArrayList<Category> list1 = d.getAllCategories();
 
-                        for (Category cc : list1) {
-                    %>
-                    <a href="#" 
-                       onclick="getPosts(<%= cc.getCid()%>,this); return false;" 
-                       class=" c-link list-group-item list-group-item-action">
-                       <%= cc.getName() %>
-                    </a>
-                    <%
-                        }
-                    %>
-                </div>
-            </div>
+						for (Category cc : list1) {
+						%>
+						<a href="#"
+							onclick="getPosts(<%=cc.getCid()%>,this); return false;"
+							class=" c-link list-group-item list-group-item-action"> <%=cc.getName()%>
+						</a>
+						<%
+						}
+						%>
+					</div>
+				</div>
 
-            <!-- Second column: Post Details -->
-            <div class="col-md-8">
-                <!-- Posts Loader -->
-                <div class="container text-center" id="loader">
-                    <i class="fa fa-refresh fa-3x fa-spin"></i>
-                    <h3 class="mt-2">Loading...</h3>
-                </div>
-                
-                <!-- Posts Container -->
-                <div class="container-fluid" id="post-container"></div>
-            </div>
-        </div>
-    </div>
-</main>
+				<!-- Second column: Post Details -->
+				<div class="col-md-8">
+					<!-- Posts Loader -->
+					<div class="container text-center" id="loader">
+						<i class="fa fa-refresh fa-3x fa-spin"></i>
+						<h3 class="mt-2">Loading...</h3>
+					</div>
+
+					<!-- Posts Container -->
+					<div class="container-fluid" id="post-container"></div>
+				</div>
+			</div>
+		</div>
+	</main>
 	<br>
 
 	<!-- Profile modal -->
@@ -522,13 +523,13 @@ if (user == null) {
 											});
 						});
 	</script>
-	
-	
-	
-	
-<!-- Loading posts using ajax -->
 
-<script >
+
+
+
+	<!-- Loading posts using ajax -->
+
+	<script>
 function getPosts(catId, temp )   //we are going to pass referece on the link we have clicked
 {
 	$("#loader").show();

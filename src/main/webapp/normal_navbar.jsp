@@ -15,10 +15,12 @@
             <span class="	fa fa-newspaper-o" ></span>  Categories
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Programming Language</a></li>
-            <li><a class="dropdown-item" href="#">Projects Implementation</a></li>
+            <li><a class="dropdown-item" href="#">Java Programming </a></li>
+            <li><a class="dropdown-item" href="#">Python Programming</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Data strcuture </a></li>
+            <li><a class="dropdown-item" href="#">Cloud Computing </a></li>
+             <li><a class="dropdown-item" href="#">Database Programming</a></li>
+             
           </ul>
         </li>
        <!--   <li class="nav-item">
@@ -26,7 +28,7 @@
         </li>
          --> 
              <li class="nav-item">
-          <a class="nav-link" href="#"><span class = "	fa fa-address-book"></span>  Contact Us</a>
+          <a class="nav-link" href="Contacts.jsp"><span class = "	fa fa-address-book"></span>  Contact Us</a>
         </li>
         
         
