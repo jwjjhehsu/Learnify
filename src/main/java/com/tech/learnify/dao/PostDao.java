@@ -157,5 +157,37 @@ public List<Post> getPostByCatId(int catId)
 	return list;
 
 }
-	
+	public Post getPostByPostId(int postId)
+	{
+		Post post=null;
+		String q="select * from posts where pid=?";
+		try
+		{
+			
+		
+		PreparedStatement p=this.con.prepareStatement(q);
+		p.setInt(1, postId);
+		ResultSet rs=p.executeQuery();
+		if(rs.next()) 
+		{
+			int pid= rs.getInt("pid");
+			String pTitle = rs.getString("pTitle");
+			String pContent = rs.getString("pContent");
+			String pCode = rs.getString("pCode");
+			String pPic = rs.getString("pPic");
+			Timestamp date = rs.getTimestamp("pDate");
+			int catId1= rs.getInt("catid");
+			int userId = rs.getInt("userId");
+			
+			
+			post = new Post(pid, pTitle, pContent, pCode, pPic, date, catId1,userId );
+			
+			
+		}
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return post;
+	}
 }
