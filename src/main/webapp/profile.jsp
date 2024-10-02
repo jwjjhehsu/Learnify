@@ -24,9 +24,16 @@ if (user == null) {
 
 <!-- CSS -->
 <style>
+
 .banner-background {
 	clip-path: polygon(0% 0%, 100% 0%, 100% 84%, 85% 84%, 100% 100%, 53% 100%, 0 100%);
 }
+
+  body{
+           background:url(img/bg.jpeg);
+           background-size: cover;
+           background-attachment: fixed;
+        }
 </style>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"

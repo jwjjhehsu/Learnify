@@ -1,17 +1,18 @@
 <%@ page import="com.tech.learnify.entities.User" %>
 <%@ page import="com.tech.learnify.entities.Post" %>
 <%@ page import="com.tech.learnify.dao.PostDao" %>
+<%@ page import="com.tech.learnify.dao.UserDao" %> <!-- Added UserDao import -->
 <%@ page import="com.tech.learnify.helper.ConnectionProvider" %>
 <%@ page errorPage="error_page.jsp" %>
-<% 
+<%
 User user = (User) session.getAttribute("currentUser");
 if (user == null) {
     response.sendRedirect("login_page.jsp");
-    return; 
+    return;
 }
 %>
 
-<% 
+<%
 int postId = 0;
 try {
     postId = Integer.parseInt(request.getParameter("post_id"));
@@ -55,6 +56,12 @@ if (p == null) {
         .row-user {
             border: 1px solid #e2e2e2;
             padding-top: 15px;
+        }
+        
+        body {
+            background: url(img/bg.jpeg);
+            background-size: cover;
+            background-attachment: fixed;
         }
     </style>
 </head>
@@ -100,7 +107,8 @@ if (p == null) {
                     <div class="card-body">
                         <div class="row my-3 row-user">
                             <div class="col-md-8">
-                                <p class="post-user-information"><a href="#!">Adarsha </a> has posted: </p>
+                                <% UserDao ud = new UserDao(ConnectionProvider.getConnection()); %>
+                                <p class="post-user-information"><a href="#!"><%= ud.getUserByUserId(p.getUserId()).getName() %> </a> has posted: </p>
                             </div>
                         </div>
                         <p class="post-content"><%= p.getpContent() %></p>
