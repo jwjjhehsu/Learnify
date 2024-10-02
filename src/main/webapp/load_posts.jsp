@@ -90,13 +90,12 @@
                     <div class="card-body">
                         <h5 class="card-title"><%= post.getpTitle() %></h5>
                         <p class="card-text"><%= post.getpContent() %></p>
-                        
                     </div>
-                       <div class="card-footer primary-background text-center">
-                        <a href="#!" class="btn btn-outline-light btn-sm"> <i class="fa fa-thumb-o-up"></i> <span>10</span></a></div>
-                       <a href="show_learnify_page.jsp?post_id=<%=p.getpid() %>" class="btn btn-outline-light btn-sm">Read More...</a>
-                       
-                       <a href="#!" class="btn btn-outline-light btn-sm"> <i class="fa fa-commenting-o"></i> <span>20</span></a></div>
+                    <div class="card-footer text-center">
+                        <a href="show_blog_page.jsp?post_id=<%= post.getPid() %>" class="btn btn-outline-light btn-sm">Read More...</a>
+                        <a href="#!" class="btn btn-outline-light btn-sm"> <i class="fa fa-thumb-o-up"></i> <span>10</span></a>
+                        <a href="#!" class="btn btn-outline-light btn-sm"> <i class="fa fa-commenting-o"></i> <span>20</span></a>
+                    </div>
                 </div>
             </div>
 <%

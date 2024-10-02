@@ -1,19 +1,21 @@
-<%@page import="com.tech.learnify.entities.User"%>
-<%@page import="com.tech.learnify.dao.PostDao"%>
-<%@page import="com.tech.learnify.util.ConnectionProvider"%>
-<%@page errorPage="error_page.jsp" %>
+<%@ page import="com.tech.learnify.entities.User" %>
+<%@ page import="com.tech.learnify.entities.Post" %>
+<%@ page import="com.tech.learnify.dao.PostDao" %>
+<%@ page import="com.tech.learnify.helper.ConnectionProvider" %>
+<%@ page errorPage="error_page.jsp" %>
 <% 
 User user = (User) session.getAttribute("currentUser");
 if (user == null) {
     response.sendRedirect("login_page.jsp");
-    return; // Ensure to return after redirecting
+    return; 
 }
+%>
 
+<% 
 int postId = 0;
 try {
     postId = Integer.parseInt(request.getParameter("post_id"));
 } catch (NumberFormatException e) {
-    // Handle error, redirect to error page
     response.sendRedirect("error_page.jsp");
     return;
 }
@@ -21,45 +23,39 @@ try {
 PostDao postDao = new PostDao(ConnectionProvider.getConnection());
 Post p = postDao.getPostByPostId(postId);
 if (p == null) {
-    // Handle the case where the post is not found
     response.sendRedirect("error_page.jsp");
     return;
 }
 %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title><%=p.getpTitle() %> || LearnifyApp</title>
+    <title><%= p.getpTitle() %> || LearnifyApp</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-         .banner-background{
-                  clip-path: polygon(30% 0%, 70% 0%, 100% 0, 100% 91%, 63% 100%, 22% 91%, 0 99%, )
-              }
-              .post-title{
-                   font-weight: 100;
-                   font-size: 30px;
-              }
-              .post-content{
-                   font-weight: 100;
-                   font-size: 25px;
-              }
-              .post-date{
-                 font-style: italic;
-                 font-weight: bold;
-              }
-              .post-user-information{
-                   font-size: 20px;
-              }
-              
-              .row-user{
-                  border:1px solid #e2e2e2;
-                  padding-top: 15px;
-              }
+        .banner-background {
+            clip-path: polygon(30% 0%, 70% 0%, 100% 0, 100% 91%, 63% 100%, 22% 91%, 0 99%);
+        }
+        .post-title {
+            font-weight: 100;
+            font-size: 30px;
+        }
+        .post-content {
+            font-weight: 100;
+            font-size: 25px;
+        }
+        .post-user-information {
+            font-size: 20px;
+        }
+        .row-user {
+            border: 1px solid #e2e2e2;
+            padding-top: 15px;
+        }
     </style>
 </head>
 <body>
@@ -73,7 +69,8 @@ if (p == null) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link active" href="profile.jsp"><span class="fa fa-lightbulb-o"></span> Learn To Achieve Anything</a></li>
-                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"> <span class="fa fa-newspaper-o"></span> Categories</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><span class="fa fa-newspaper-o"></span> Categories</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Programming Language</a></li>
                             <li><a class="dropdown-item" href="#">Projects Implementation</a></li>
@@ -85,38 +82,31 @@ if (p == null) {
                     <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#add-post-modal"><span class="fa fa-id-card"></span> Add Post</a></li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#!" data-bs-toggle="modal" data-bs-target="#profile-modal"><span class="fa fa-user-circle"></span> <%=user.getName()%></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!" data-bs-toggle="modal" data-bs-target="#profile-modal"><span class="fa fa-user-circle"></span> <%= user.getName() %></a></li>
                     <li class="nav-item"><a class="nav-link" href="LogoutServlet"><span class="fa fa-sign-out"></span> Log out</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    
+
     <!-- Main content -->
     <div class="container">
         <div class="row my-4">
             <div class="col-md-8 offset-md-2">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
-                        <h4 class="post-title"><%=p.getpTitle() %></h4>
+                        <h4 class="post-title"><%= p.getpTitle() %></h4>
                     </div>
                     <div class="card-body">
-                    
                         <div class="row my-3 row-user">
                             <div class="col-md-8">
-                                 <p class="post-user-information">  <a href="#!">Adarsha </a> has posted : </p>
-                            </div>
-                            
-                            <div class="col-md-4">
-                               <p> <%= p.getpData() .toLocalDateString() %>
+                                <p class="post-user-information"><a href="#!">Adarsha </a> has posted: </p>
                             </div>
                         </div>
-                        <p class="post-content"><%=p.getpContent() %></p>
+                        <p class="post-content"><%= p.getpContent() %></p>
                         <br>
-                        <br>
-                        
                         <div class="post-code">
-                        <pre><%=p.getpCode() %></pre>
+                            <pre><%= p.getpCode() %></pre>
                         </div>
                     </div>
                     <div class="card-footer bg-primary">
@@ -140,23 +130,16 @@ if (p == null) {
                     <%
                     String profileImage = user.getGender().equalsIgnoreCase("female") ? "pics/female.png" : "pics/" + user.getProfile();
                     %>
-                    <img src="<%=profileImage%>" class="img-fluid" style="border-radius: 50%; max-width: 150px;" alt="User Profile Image" />
-                    <h4 class="mt-3"><%=user.getName()%></h4>
+                    <img src="<%= profileImage %>" class="img-fluid" style="border-radius: 50%; max-width: 150px;" alt="User Profile Image" />
+                    <h4 class="mt-3"><%= user.getName() %></h4>
                 </div>
                 <div id="profile-details">
                     <table class="table">
                         <tbody>
-                            <tr><th scope="row">ID:</th><td><%=user.getId()%></td></tr>
-                            <tr><th scope="row">Email:</th><td><%=user.getEmail()%></td></tr>
-                            <tr><th scope="row">Gender:</th><td><%=user.getGender()%></td></tr>
-                            <tr><th scope="row">Status:</th><td><%=user.getAbout()%></td></tr>
-                            <tr><th scope="row">Registered on:</th><td><%=user.getDatetime().toString()%></td></tr>
+                            <tr><th scope="row">ID:</th><td><%= user.getId() %></td></tr>
+                            <!-- Add more profile details as needed -->
                         </tbody>
                     </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="edit-profile-btn" class="btn btn-primary">Edit</button>
                 </div>
             </div>
         </div>
